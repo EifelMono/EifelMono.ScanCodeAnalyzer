@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27705.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer", "EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj", "{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer.Test", "EifelMono.ScanCodeAnalyzer.Test\EifelMono.ScanCodeAnalyzer.Test.csproj", "{5429C115-B44A-4142-9878-3606D5F5325D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EifelMono.ScancodeAnalyzerShared", "EifelMono.ScancodeAnalyzerShared\EifelMono.ScancodeAnalyzerShared.shproj", "{6FF2F0F0-D431-4A72-859F-018114B772AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EifelMonoScancodeAnalyzerPcl", "EifelMonoScancodeAnalyzerPcl\EifelMonoScancodeAnalyzerPcl.csproj", "{BD26C81A-59CE-44DD-BDB2-E27A14988311}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		EifelMono.ScancodeAnalyzerShared\EifelMono.ScancodeAnalyzerShared.projitems*{6ff2f0f0-d431-4a72-859f-018114b772af}*SharedItemsImports = 13
+		EifelMono.ScancodeAnalyzerShared\EifelMono.ScancodeAnalyzerShared.projitems*{bd26c81a-59ce-44dd-bdb2-e27a14988311}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5429C115-B44A-4142-9878-3606D5F5325D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5429C115-B44A-4142-9878-3606D5F5325D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5429C115-B44A-4142-9878-3606D5F5325D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5429C115-B44A-4142-9878-3606D5F5325D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD26C81A-59CE-44DD-BDB2-E27A14988311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD26C81A-59CE-44DD-BDB2-E27A14988311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD26C81A-59CE-44DD-BDB2-E27A14988311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD26C81A-59CE-44DD-BDB2-E27A14988311}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E22C5512-28EE-468A-9FB2-649675AEF01A}
+	EndGlobalSection
+EndGlobal

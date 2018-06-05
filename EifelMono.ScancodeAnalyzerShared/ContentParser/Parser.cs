@@ -51,19 +51,16 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 if (_Identifiers == null)
                 {
                     _Identifiers = new List<Identifier>();
-#if PCL
-#else
                     var properties = this.GetType()
                         .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                         .Where(ø => ø.PropertyType.IsSubclassOf(typeof(Identifier)));
                     foreach (var p in properties)
                     {
-                        var identifier = (Identifier)p.GetValue(this);
+                        var identifier = (Identifier)(p.GetValue(this, null));
                         if (identifier != null)
                             if (!_Identifiers.Contains(identifier))
                                 _Identifiers.Add(identifier);
                     }
-#endif
                 }
                 return _Identifiers;
             }

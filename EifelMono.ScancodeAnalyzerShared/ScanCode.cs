@@ -27,11 +27,7 @@ namespace EifelMono.ScanCodeAnalyzer
         }
         public static string Escape(string scanCode)
         {
-#if PCL
-            return scanCode;
-#else
             return Escape(Encoding.ASCII.GetBytes(scanCode));
-#endif
         }
 #endregion
 

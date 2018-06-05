@@ -6,7 +6,7 @@
     <SharedGUID>6ff2f0f0-d431-4a72-859f-018114b772af</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>EifelMono.ScancodeAnalyzerShared</Import_RootNamespace>
+    <Import_RootNamespace>EifelMono.ScanCodeAnalyzerShared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BarcodeFormat.cs" />
@@ -26,8 +26,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)ScanCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScanCodeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScanCodeValues.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)ContentParser\info.md" />
   </ItemGroup>
 </Project>

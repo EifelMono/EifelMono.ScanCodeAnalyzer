@@ -8,10 +8,13 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>7.2</LangVersion>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
   <Import Project="..\EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.projitems" Label="Shared" />
 
   <ItemGroup>

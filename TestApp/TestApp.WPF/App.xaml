@@ -13,16 +13,16 @@
             <SolidColorBrush x:Key="AccentColor" Color="#F5C210" />
 
             <!-- Default Command Bar Color -->
-            <SolidColorBrush x:Key="CommandBarBackgroundColor" Color="#151C25" />
-            <SolidColorBrush x:Key="CommandBarTextColor" Color="White" />
+            <!--SolidColorBrush x:Key="CommandBarBackgroundColor" Color="#151C25" />
+            <SolidColorBrush x:Key="CommandBarTextColor" Color="White" /-->
 
             <!-- Default Title Bar Color -->
-            <SolidColorBrush x:Key="DefaultTitleBarBackgroundColor" Color="#151C25" />
-            <SolidColorBrush x:Key="DefaultTitleBarTextColor" Color="White" />
+            <!--SolidColorBrush x:Key="DefaultTitleBarBackgroundColor" Color="#151C25" />
+            <SolidColorBrush x:Key="DefaultTitleBarTextColor" Color="White" /-->
 
             <!-- Default Tabbed Bar Color -->
-            <SolidColorBrush x:Key="DefaultTabbedBarBackgroundColor" Color="#151C25" />
-            <SolidColorBrush x:Key="DefaultTabbedBarTextColor" Color="White" />
+            <!--SolidColorBrush x:Key="DefaultTabbedBarBackgroundColor" Color="#151C25" />
+            <SolidColorBrush x:Key="DefaultTabbedBarTextColor" Color="White" /-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

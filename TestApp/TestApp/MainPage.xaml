@@ -6,18 +6,33 @@
     <ContentPage.Resources>
         <StyleSheet Source="Pages.css" />
     </ContentPage.Resources>
-    <StackLayout>
-        <Label Text="Welcome to CSS!"  />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="0" ItemsSource="{Binding ScanCodes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Type}"
+                          Detail="{Binding Value}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Grid.Row="1">
 
-        <StackLayout  StyleId="LoginForm">
+            <Label Text="Welcome to CSS!"  />
 
-            <Entry Placeholder="Email Address" />
-            <Entry Placeholder="Password" IsPassword="true" />
+            <StackLayout  StyleId="LoginForm">
 
-            <Button Text="Login" StyleClass="primary" />
-            <Button Text="Forgot Password?" StyleClass="secondary"/>
+                <Entry Placeholder="Email Address" />
+                <Entry Placeholder="Password" IsPassword="true" />
 
+                <Button Text="Login" StyleClass="primary" />
+                <Button Text="Forgot Password?" StyleClass="secondary"/>
+
+            </StackLayout>
         </StackLayout>
-    </StackLayout>
+    </Grid>
 
 </ContentPage>

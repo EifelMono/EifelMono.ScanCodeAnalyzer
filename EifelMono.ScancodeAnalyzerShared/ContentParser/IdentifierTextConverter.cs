@@ -6,7 +6,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 {
     public class IdentifierTextConverter
     {
-        public virtual (bool Ok, object Value) TextToValue(string text)
+        public virtual (bool ok, object value) TextToValue(string text)
         {
             return ( true, text);
         }

@@ -12,7 +12,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
             Format = format;
         }
-        public override (bool Ok, object Value) TextToValue(string text)
+        public override (bool ok, object value) TextToValue(string text)
         {
             if (string.IsNullOrEmpty(Format))
                 return (false, text);

@@ -107,9 +107,9 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                     scanCode = scanCode.Skip(identifiertLen);
                     identifier.Text = scanCode.Take(identifier.Length, identifier.Stop);
                     identifier.TextState = IdentifierTextState.Parsed;
-                    var convert = identifier.Converter.TextToValue(identifier.Text);
-                    identifier.Value = convert.Value;
-                    identifier.ValueState = convert.Ok ? IdentifierValueState.Converted : IdentifierValueState.ConvertError;
+                    var (ok, value) = identifier.Converter.TextToValue(identifier.Text);
+                    identifier.Value = value;
+                    identifier.ValueState = ok ? IdentifierValueState.Converted : IdentifierValueState.ConvertError;
                     scanCode = scanCode.Skip(identifier.Length, identifier.Stop);
                     return true;
                 }

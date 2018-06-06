@@ -11,5 +11,11 @@ namespace EifelMono.ScanCodeAnalyzer
         public string ProductCode { get; set; } = "";
         public ProductCodeType ProductCodeType { get; set; } = ProductCodeType.NONE;
         public ProductCodeDetails ProductCodeDetails { get; set; } = new ProductCodeDetails();
+
+	public DateTime ExpiryDate { get; set; } = DateTime.MinValue;
+
+	public string BatchNumber { get; set; } = "";
+
+	public string SerialNumber { get; set; } = "";
     }
 }

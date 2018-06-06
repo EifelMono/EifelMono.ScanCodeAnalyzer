@@ -25,14 +25,14 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 
         public override bool CanParse()
         {
-            if (!base.CanParse())
-                return false;
-            if (ScanCode.StartsWith(Start) && ScanCode.EndsWith(End))
-                return true;
-            return false;
-        }
+#pragma warning disable IDE0046 // Convert to conditional expression
+	    if (!base.CanParse())
+		return false;
+	    return ScanCode.StartsWith(Start) && ScanCode.EndsWith(End) ? true : false;
+#pragma warning restore IDE0046 // Convert to conditional expression
+	}
 
-        public override string ScanCodeWithoutFrame()
+	public override string ScanCodeWithoutFrame()
         {
             var scanCode = base.ScanCodeWithoutFrame();
             if (ScanCode.StartsWith(Start))

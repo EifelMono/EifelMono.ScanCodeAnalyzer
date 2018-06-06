@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27705.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EifelMono.ScanCodeAnalyzer", "EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj", "{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer", "EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj", "{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EifelMono.ScanCodeAnalyzer.Test", "EifelMono.ScanCodeAnalyzer.Test\EifelMono.ScanCodeAnalyzer.Test.csproj", "{5429C115-B44A-4142-9878-3606D5F5325D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer.Test", "EifelMono.ScanCodeAnalyzer.Test\EifelMono.ScanCodeAnalyzer.Test.csproj", "{5429C115-B44A-4142-9878-3606D5F5325D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EifelMono.ScanCodeAnalyzerShared", "EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.shproj", "{6FF2F0F0-D431-4A72-859F-018114B772AF}"
 EndProject
@@ -43,6 +43,7 @@ Global
 		EifelMono.ScanCodeAnalyzerTestShared\EifelMono.ScanCodeAnalyzerTestShared.projitems*{2e3df5c2-8a38-4a03-86d7-8d463c917e47}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{55718664-af55-4ba9-82df-14e81d9117ed}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{5afb70cc-3332-4076-b246-b978c039c268}*SharedItemsImports = 13
+		TestApp\TestApp\TestApp.projitems*{5c68784b-47ca-4dcb-9609-0a2f759b2efd}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{62b78c43-a844-4a20-8e74-b53ccfa94846}*SharedItemsImports = 4
 		EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.projitems*{6ff2f0f0-d431-4a72-859f-018114b772af}*SharedItemsImports = 13
 		EifelMono.ScanCodeAnalyzerTestShared\EifelMono.ScanCodeAnalyzerTestShared.projitems*{7a3750af-6dec-4502-8c3a-04f20172ac77}*SharedItemsImports = 13

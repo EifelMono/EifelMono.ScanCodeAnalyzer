@@ -3,36 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TestApp"
              x:Class="TestApp.MainPage">
-    <ContentPage.Resources>
-        <StyleSheet Source="Pages.css" />
-    </ContentPage.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ListView Grid.Row="0" ItemsSource="{Binding ScanCodes}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Type}"
-                          Detail="{Binding Value}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackLayout Grid.Row="1">
-
-            <Label Text="Welcome to CSS!"  />
-
-            <StackLayout  StyleId="LoginForm">
-
-                <Entry Placeholder="Email Address" />
-                <Entry Placeholder="Password" IsPassword="true" />
-
-                <Button Text="Login" StyleClass="primary" />
-                <Button Text="Forgot Password?" StyleClass="secondary"/>
-
+  <ContentPage.Resources>
+    <StyleSheet Source="Pages.css" />
+  </ContentPage.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+    <ListView Grid.Row="0" ItemsSource="{Binding Data.ScanCodes}" ItemSelected="ListView_ItemSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout>
+              <Label StyleClass="key" Text="{Binding Type}"  />
+              <Label StyleClass="value"  Text="{Binding Value}" />
             </StackLayout>
-        </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <Grid Grid.Row="1" StyleId="BackFrame1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="3*"/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="0" Grid.Column="0" StyleClass="key" Text="Productcode"/>
+      <Label Grid.Row="0" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.ProductCode}"/>
+      <Label Grid.Row="1" Grid.Column="0" StyleClass="key" Text="Expirydate"/>
+      <Label Grid.Row="1" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.ExpiryDate}"/>
+      <Label Grid.Row="2" Grid.Column="0" StyleClass="key" Text="Batchnumber"/>
+      <Label Grid.Row="2" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.BatchNumber}"/>
+      <Label Grid.Row="3" Grid.Column="0" StyleClass="key" Text="SerialNumber"/>
+      <Label Grid.Row="4" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.SerialNumber}"/>
+      <Label Grid.Row="5" Grid.Column="0" StyleClass="key" Text="SerialNumber"/>
+      <Label Grid.Row="5" Grid.Column="1" StyleClass="value" Text="{Binding Data.SerialNumber}"/>
     </Grid>
+  </Grid>
 
 </ContentPage>

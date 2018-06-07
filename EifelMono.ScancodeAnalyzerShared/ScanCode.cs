@@ -64,6 +64,10 @@ namespace EifelMono.ScanCodeAnalyzer {
 	    var parser = new GS1Parser(analyze.ScanCode);
 	    if (parser.CanParse()) {
 		parser.Parse();
+		analyze.ProductCode = string.IsNullOrEmpty(parser.ProductNumber1.Value)? parser.ProductNumber2.Value: parser.ProductNumber1.Value;
+		analyze.ExpiryDate = parser.ExpiryDate.Value;
+		analyze.BatchNumber = parser.BatchNumber.Value;
+		analyze.SerialNumber = parser.SerialNumber.Value;
 		return true;
 	    }
 	    return false;
@@ -73,6 +77,10 @@ namespace EifelMono.ScanCodeAnalyzer {
 	    var parser = new IFAParser(analyze.ScanCode);
 	    if (parser.CanParse()) {
 		parser.Parse();
+		analyze.ProductCode = parser.ProductNumber.Value;
+		analyze.ExpiryDate = parser.ExpiryDate.Value;
+		analyze.BatchNumber = parser.BatchNumber.Value;
+		analyze.SerialNumber = parser.SerialNumber.Value;
 		return true;
 	    }
 	    return false;

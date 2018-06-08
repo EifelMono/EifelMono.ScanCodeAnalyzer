@@ -23,9 +23,12 @@ namespace TestApp {
 	}
 
 	public class CounterClass : MvvmObject {
-	    public MvvmProperty<int> TimerCount { get; set; } = MvvmProperty.Create<int>();
+	    public MvvmProperty<int> TimerCount { get; set; }
+		= MvvmProperty.Create<int>()
+		    .DoOnChanged((o, n) => {
+			Debug.WriteLine($"old={o} new={n}");
+		    });
 	}
-
 
 	public class MvvmData : MvvmObject {
 
@@ -55,7 +58,6 @@ namespace TestApp {
 	    public MvvmProperty<DateTime> TimeStamp { get; set; } = MvvmProperty.Create<DateTime>();
 
 	    public CounterClass Counters { get; set; } = new CounterClass();
-
 
 	    public ICommand CommandChangeValueInList { get; set; }
 	    public ICommand CommandAddValueToList { get; set; }

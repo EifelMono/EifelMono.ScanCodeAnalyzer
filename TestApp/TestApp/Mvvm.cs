@@ -13,16 +13,11 @@ namespace EifelMono.Mvvm {
 	void OnPropertyChanged(string propertyName);
     }
 
-    public interface IMvvmObject {
-	IMvvmOnPropertyChanged MvvmParent { get; set; }
-    }
-
-    public class MvvmObject : INotifyPropertyChanged, IMvvmOnPropertyChanged, IMvvmObject {
-
+    public class MvvmObject : INotifyPropertyChanged, IMvvmOnPropertyChanged {
 	public MvvmObject()
 	{
-	    foreach (var property in MvvmProperties) {
-		property.MvvmParent = this;
+	    foreach (var mvvmProperty in MvvmProperties) {
+		mvvmProperty.MvvmParent = this;
 	    }
 	}
 
@@ -48,63 +43,48 @@ namespace EifelMono.Mvvm {
 	#endregion
 
 	#region Bindings
-
 	public event PropertyChangedEventHandler PropertyChanged;
-	public IMvvmOnPropertyChanged MvvmParent { get; set; } = null;
 	public void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
 	    (PropertyChanged)?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	public void SelfOnPropertyChanged(string propertyName = null)
-	{
-	    if (MvvmParent != null)
-		MvvmParent.OnPropertyChanged(propertyName);
-	    else
-		OnPropertyChanged(propertyName);
-	}
-	public void RefreshAll() => SelfOnPropertyChanged(string.Empty);
+	public void RefreshAll() => OnPropertyChanged(string.Empty);
 	#endregion
     }
 
-    public class MvvmProperty : INotifyPropertyChanged, IMvvmOnPropertyChanged, IMvvmObject  {
-
+    public class MvvmProperty {
 	public string PropertyName { get; set; }
-	public event PropertyChangedEventHandler PropertyChanged;
 	public IMvvmOnPropertyChanged MvvmParent { get; set; } = null;
-
 	public void OnPropertyChanged(string propertyName = null) =>
-	    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName ?? PropertyName));
-	public void SelfOnPropertyChanged(string propertyName = null)
-	{
-
-	    if (MvvmParent != null)
-		MvvmParent.OnPropertyChanged(propertyName?? PropertyName);
-	    else
-		OnPropertyChanged(propertyName ?? PropertyName);
-	}
-
-	public void RefreshAll() => SelfOnPropertyChanged(string.Empty);
-
+		MvvmParent?.OnPropertyChanged(propertyName ?? PropertyName);
+	public void RefreshAll() => OnPropertyChanged(string.Empty);
 	public static MvvmProperty<T> Create<T>([CallerMemberName]string propertyName = "") where T : IComparable
 	{
 	    return new MvvmProperty<T>() { PropertyName = propertyName };
 	}
     }
     public class MvvmProperty<T> : MvvmProperty where T : IComparable {
-
-	protected T _Value;
+	protected T _Value = default(T);
 	public T Value {
 	    get => _Value; set {
 		try {
 		    if (value.CompareTo(_Value) != 0) {
+			var o = _Value;
 			_Value = value;
-			SelfOnPropertyChanged();
+			OnPropertyChanged();
+			OnChanged?.Invoke(o, value);
 		    }
 		} catch (Exception ex) {
 		    Debug.WriteLine(ex);
 		    _Value = value;
-		    SelfOnPropertyChanged();
+		    OnPropertyChanged();
 		}
-
 	    }
+	}
+	public Action<T, T> OnChanged { get; set; }
+
+	public MvvmProperty<T> DoOnChanged(Action<T, T> onChanged)
+	{
+	    OnChanged = onChanged;
+	    return this;
 	}
     }
 }

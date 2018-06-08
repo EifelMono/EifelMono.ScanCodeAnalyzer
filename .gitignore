@@ -254,3 +254,5 @@ ProLog2.Ocr.Cloud.Service.*.zip
 **/*.zip
 **/*.msi
 
+# mfractor
+.mfractor/

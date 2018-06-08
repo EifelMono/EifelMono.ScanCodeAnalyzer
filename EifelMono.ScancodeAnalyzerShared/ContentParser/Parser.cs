@@ -53,7 +53,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                     _Identifiers = new List<Identifier>();
                     var properties = this.GetType()
                         .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                        .Where(ø => ø.PropertyType.IsSubclassOf(typeof(Identifier)));
+                        .Where(x => x.PropertyType.IsSubclassOf(typeof(Identifier)));
                     foreach (var p in properties)
                     {
                         var identifier = (Identifier)(p.GetValue(this, null));

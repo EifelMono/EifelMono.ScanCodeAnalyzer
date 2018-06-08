@@ -8,18 +8,23 @@
     </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="{Binding Data.TimeStamp.Value}"/>
+        <StackLayout Grid.Row="0" >
+            <Label Text="{Binding Data.TimeStamp.Value}"/>
+            <Label Text="{Binding Data.Counters.TimerCount.Value}"/>
+            <Button Text="Change Value in List" Command="{Binding Data.CommandChangeValueInList}"/>
+            <Button Text="Add value to List" Command="{Binding Data.CommandAddValueToList}"/>
+        </StackLayout>
         <ListView Grid.Row="1" ItemsSource="{Binding Data.ScanCodes}" ItemSelected="ListView_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label StyleClass="key" Text="{Binding Type}"  />
-                            <Label StyleClass="value"  Text="{Binding Value}" />
+                            <Label StyleClass="key" Text="{Binding Type.Value}"  />
+                            <Label StyleClass="value"  Text="{Binding Code.Value}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

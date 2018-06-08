@@ -7,17 +7,17 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace TestApp {
+namespace EifelMono.Mvvm {
 
-    public interface IOnPropertyChanged {
+    public interface IMvvmOnPropertyChanged {
 	void OnPropertyChanged(string propertyName);
     }
 
-    public interface IMvvmParent {
-	IOnPropertyChanged MvvmParent { get; set; }
+    public interface IMvvmObject {
+	IMvvmOnPropertyChanged MvvmParent { get; set; }
     }
 
-    public class MvvmObject : INotifyPropertyChanged, IOnPropertyChanged, IMvvmParent {
+    public class MvvmObject : INotifyPropertyChanged, IMvvmOnPropertyChanged, IMvvmObject {
 
 	public MvvmObject()
 	{
@@ -26,6 +26,7 @@ namespace TestApp {
 	    }
 	}
 
+	#region MvvmProperties
 	protected List<MvvmProperty> _MvvmProperties = null;
 	public List<MvvmProperty> MvvmProperties {
 	    get {
@@ -33,7 +34,7 @@ namespace TestApp {
 		    _MvvmProperties = new List<MvvmProperty>();
 		    var properties = this.GetType()
 			.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-			.Where(ø => ø.PropertyType.IsSubclassOf(typeof(MvvmProperty)));
+			.Where(x => x.PropertyType.IsSubclassOf(typeof(MvvmProperty)));
 		    foreach (var p in properties) {
 			var identifier = (MvvmProperty)(p.GetValue(this, null));
 			if (identifier != null)
@@ -44,49 +45,48 @@ namespace TestApp {
 		return _MvvmProperties;
 	    }
 	}
+	#endregion
+
+	#region Bindings
 
 	public event PropertyChangedEventHandler PropertyChanged;
-
-	public IOnPropertyChanged MvvmParent { get; set; } = null;
-	public void OnPropertyChanged([CallerMemberName]string propertyName = "")
-	{
+	public IMvvmOnPropertyChanged MvvmParent { get; set; } = null;
+	public void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
 	    (PropertyChanged)?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	}
-	public void UseOnPropertyChanged(string propertyName = null)
+	public void SelfOnPropertyChanged(string propertyName = null)
 	{
 	    if (MvvmParent != null)
 		MvvmParent.OnPropertyChanged(propertyName);
 	    else
 		OnPropertyChanged(propertyName);
 	}
-
-	public void Refresh() => OnPropertyChanged(string.Empty);
+	public void RefreshAll() => SelfOnPropertyChanged(string.Empty);
+	#endregion
     }
 
-
-    public class MvvmProperty : INotifyPropertyChanged, IOnPropertyChanged, IMvvmParent {
+    public class MvvmProperty : INotifyPropertyChanged, IMvvmOnPropertyChanged, IMvvmObject  {
 
 	public string PropertyName { get; set; }
 	public event PropertyChangedEventHandler PropertyChanged;
-	public IOnPropertyChanged MvvmParent { get; set; } = null;
+	public IMvvmOnPropertyChanged MvvmParent { get; set; } = null;
 
-	public void OnPropertyChanged(string propertyName = null)
-	{
+	public void OnPropertyChanged(string propertyName = null) =>
 	    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName ?? PropertyName));
-	}
-	public void UseOnPropertyChanged(string propertyName = null)
+	public void SelfOnPropertyChanged(string propertyName = null)
 	{
+
 	    if (MvvmParent != null)
-		MvvmParent.OnPropertyChanged(propertyName);
+		MvvmParent.OnPropertyChanged(propertyName?? PropertyName);
 	    else
-		OnPropertyChanged(propertyName);
+		OnPropertyChanged(propertyName ?? PropertyName);
 	}
+
+	public void RefreshAll() => SelfOnPropertyChanged(string.Empty);
 
 	public static MvvmProperty<T> Create<T>([CallerMemberName]string propertyName = "") where T : IComparable
 	{
 	    return new MvvmProperty<T>() { PropertyName = propertyName };
 	}
-
     }
     public class MvvmProperty<T> : MvvmProperty where T : IComparable {
 
@@ -96,12 +96,12 @@ namespace TestApp {
 		try {
 		    if (value.CompareTo(_Value) != 0) {
 			_Value = value;
-			UseOnPropertyChanged();
+			SelfOnPropertyChanged();
 		    }
 		} catch (Exception ex) {
 		    Debug.WriteLine(ex);
 		    _Value = value;
-		    UseOnPropertyChanged();
+		    SelfOnPropertyChanged();
 		}
 
 	    }

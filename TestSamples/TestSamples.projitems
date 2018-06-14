@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a5e26ae9-d2b9-418d-86a1-a294c7dea7a1</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TestSamples</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CoreSamples.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GS1Samples.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFASamples.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TestSample.cs" />
+  </ItemGroup>
+</Project>

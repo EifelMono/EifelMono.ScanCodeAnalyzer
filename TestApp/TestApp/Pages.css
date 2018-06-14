@@ -6,6 +6,7 @@
 ^Label {
     text-align: left;
     font-style: initial;
+    vertical-align: center
     color: black;
 }
 

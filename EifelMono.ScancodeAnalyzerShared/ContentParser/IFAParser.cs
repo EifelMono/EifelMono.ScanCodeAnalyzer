@@ -15,12 +15,12 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         }
 
         #region Characters
-        public static string FieldSeperator = @"\x1D";
-        public static string RecordSeperator = @"\x1E";
+        public static string FieldSeperator = Escape(0x1d);
+        public static string RecordSeperator = Escape(0x1e);
         // Symbolic Identifier
 
         public static string Start = $"[)>{RecordSeperator}06{FieldSeperator}";
-        public static string End = @"\x04";
+        public static string End = Escape(4);
         #endregion
 
         public override bool CanParse()

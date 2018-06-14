@@ -3,6 +3,7 @@
   <Import Project="..\packages\xunit.runner.visualstudio.2.4.0-beta.2.build4010\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\packages\xunit.runner.visualstudio.2.4.0-beta.2.build4010\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\packages\xunit.core.2.4.0-beta.2.build4010\build\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.4.0-beta.2.build4010\build\xunit.core.props')" />
   <Import Project="..\EifelMono.ScancodeAnalyzerTestShared\EifelMono.ScancodeAnalyzerTestShared.projitems" Label="Shared" />
+  <Import Project="..\TestSamples\TestSamples.projitems" Label="Shared" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>

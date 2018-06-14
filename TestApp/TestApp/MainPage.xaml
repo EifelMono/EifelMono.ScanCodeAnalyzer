@@ -1,30 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:TestApp"
-             x:Class="TestApp.MainPage">
+<ContentPage
+    x:Class="TestApp.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestApp"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ContentPage.Resources>
         <StyleSheet Source="Pages.css" />
     </ContentPage.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackLayout Grid.Row="0" >
-            <Label Text="{Binding Data.TimeStamp.Value}"/>
-            <Label Text="{Binding Data.Counters.TimerCount.Value}"/>
-            <Button Text="Change Value in List" Command="{Binding Data.CommandChangeValueInList}"/>
-            <Button Text="Add value to List" Command="{Binding Data.CommandAddValueToList}"/>
-        </StackLayout>
-        <ListView Grid.Row="1" ItemsSource="{Binding Data.ScanCodes}" ItemSelected="ListView_ItemSelected">
+        <Grid Grid.Row="0" StyleId="BackFrame1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label
+                Grid.Column="0"
+                StyleClass="key"
+                Text="Your Scancode" />
+            <Entry
+                Grid.Column="1"
+                Placeholder="Insert your ScanCode"
+                StyleClass="value"
+                Text="{Binding ScanCode.Value}" />
+            <Button
+                Grid.Column="2"
+                Command="{Binding CommandScanCodeAnaylze}"
+                Text="Analyze" />
+        </Grid>
+        <ListView
+            Grid.Row="1"
+            ItemSelected="ListView_ItemSelected"
+            ItemsSource="{Binding ScanCodes}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label StyleClass="key" Text="{Binding Type.Value}"  />
-                            <Label StyleClass="value"  Text="{Binding Code.Value}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label StyleClass="key" Text="{Binding ScanCodeType}" />
+                                <Label StyleClass="key" Text="" />
+                                <Label StyleClass="key" Text="{Binding Name}" />
+                            </StackLayout>
+                            <Label StyleClass="value" Text="{Binding ScanCode}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -32,26 +58,56 @@
         </ListView>
         <Grid Grid.Row="2" StyleId="BackFrame1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" StyleClass="key" Text="Productcode"/>
-            <Label Grid.Row="0" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.ProductCode}"/>
-            <Label Grid.Row="1" Grid.Column="0" StyleClass="key" Text="Expirydate"/>
-            <Label Grid.Row="1" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.ExpiryDate}"/>
-            <Label Grid.Row="2" Grid.Column="0" StyleClass="key" Text="Batchnumber"/>
-            <Label Grid.Row="2" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.BatchNumber}"/>
-            <Label Grid.Row="3" Grid.Column="0" StyleClass="key" Text="SerialNumber"/>
-            <Label Grid.Row="3" Grid.Column="1" StyleClass="value" Text="{Binding Data.ScanCodeValues.SerialNumber}"/>
-            <Label Grid.Row="4" Grid.Column="0" StyleClass="key" Text="SerialNumber"/>
-            <Label Grid.Row="4" Grid.Column="1" StyleClass="value" Text="{Binding Data.SerialNumber.Value}"/>
+            <Label
+                Grid.Row="0"
+                Grid.Column="0"
+                StyleClass="key"
+                Text="Productcode" />
+            <Label
+                Grid.Row="0"
+                Grid.Column="1"
+                StyleClass="value"
+                Text="{Binding ScanCodeValues.ProductCode}" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="0"
+                StyleClass="key"
+                Text="Expirydate (yyyy-MM-dd}" />
+            <Label
+                Grid.Row="1"
+                Grid.Column="1"
+                StyleClass="value"
+                Text="{Binding ScanCodeValues.ExpiryDate, StringFormat='{0:yyyy-MM-dd}'}" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                StyleClass="key"
+                Text="Batchnumber" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                StyleClass="value"
+                Text="{Binding ScanCodeValues.BatchNumber}" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                StyleClass="key"
+                Text="SerialNumber" />
+            <Label
+                Grid.Row="3"
+                Grid.Column="1"
+                StyleClass="value"
+                Text="{Binding ScanCodeValues.SerialNumber}" />
         </Grid>
     </Grid>
 </ContentPage>

@@ -37,17 +37,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.WPF", "TestApp\Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp.MacOS", "TestApp\TestApp.MacOS\TestApp.MacOS.csproj", "{5C68784B-47CA-4DCB-9609-0A2F759B2EFD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4506C155-2556-42E6-91FB-969BED23DBFB}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "TestSamples", "TestSamples\TestSamples.shproj", "{A5E26AE9-D2B9-418D-86A1-A294C7DEA7A1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		TestApp\TestApp\TestApp.projitems*{08e1807b-4947-4139-b40e-5509c53a8a48}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{08e1807b-4947-4139-b40e-5509c53a8a48}*SharedItemsImports = 4
 		EifelMono.ScanCodeAnalyzerTestShared\EifelMono.ScanCodeAnalyzerTestShared.projitems*{2e3df5c2-8a38-4a03-86d7-8d463c917e47}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{2e3df5c2-8a38-4a03-86d7-8d463c917e47}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{55718664-af55-4ba9-82df-14e81d9117ed}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{55718664-af55-4ba9-82df-14e81d9117ed}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{5afb70cc-3332-4076-b246-b978c039c268}*SharedItemsImports = 13
 		TestApp\TestApp\TestApp.projitems*{5c68784b-47ca-4dcb-9609-0a2f759b2efd}*SharedItemsImports = 4
 		TestApp\TestApp\TestApp.projitems*{62b78c43-a844-4a20-8e74-b53ccfa94846}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{62b78c43-a844-4a20-8e74-b53ccfa94846}*SharedItemsImports = 4
 		EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.projitems*{6ff2f0f0-d431-4a72-859f-018114b772af}*SharedItemsImports = 13
 		EifelMono.ScanCodeAnalyzerTestShared\EifelMono.ScanCodeAnalyzerTestShared.projitems*{7a3750af-6dec-4502-8c3a-04f20172ac77}*SharedItemsImports = 13
 		TestApp\TestApp\TestApp.projitems*{a3e0a80b-0f0f-44f5-b9d6-8ae26391aee2}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{a3e0a80b-0f0f-44f5-b9d6-8ae26391aee2}*SharedItemsImports = 4
+		TestSamples\TestSamples.projitems*{a5e26ae9-d2b9-418d-86a1-a294c7dea7a1}*SharedItemsImports = 13
 		EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.projitems*{c6ada3f0-82d5-4b38-9430-0f0a5fcf65aa}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -536,13 +546,16 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5429C115-B44A-4142-9878-3606D5F5325D} = {09229AF3-41E2-4331-B6A8-7267B2D645A8}
 		{7A3750AF-6DEC-4502-8C3A-04F20172AC77} = {09229AF3-41E2-4331-B6A8-7267B2D645A8}
+		{09229AF3-41E2-4331-B6A8-7267B2D645A8} = {4506C155-2556-42E6-91FB-969BED23DBFB}
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47} = {09229AF3-41E2-4331-B6A8-7267B2D645A8}
+		{31DA30DD-0DC5-4700-A8A2-B81B48C174AB} = {4506C155-2556-42E6-91FB-969BED23DBFB}
 		{A3E0A80B-0F0F-44F5-B9D6-8AE26391AEE2} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
 		{08E1807B-4947-4139-B40E-5509C53A8A48} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
 		{55718664-AF55-4BA9-82DF-14E81D9117ED} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
 		{5AFB70CC-3332-4076-B246-B978C039C268} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
 		{62B78C43-A844-4A20-8E74-B53CCFA94846} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
 		{5C68784B-47CA-4DCB-9609-0A2F759B2EFD} = {31DA30DD-0DC5-4700-A8A2-B81B48C174AB}
+		{A5E26AE9-D2B9-418D-86A1-A294C7DEA7A1} = {4506C155-2556-42E6-91FB-969BED23DBFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E22C5512-28EE-468A-9FB2-649675AEF01A}

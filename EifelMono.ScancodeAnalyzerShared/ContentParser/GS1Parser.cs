@@ -17,9 +17,9 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         #region Characters
         // Group Group-Separator
         // 1d == 29
-        public static string GroupSeperator = @"\x1D";
-        // Symbolic Identifier
-        public static string Start = "]d2";
+        public static string GroupSeperator = Escape(0x1d);
+	// Symbolic Identifier
+	public static string Start = "]d2";
 
         #endregion
         public override bool CanParse()

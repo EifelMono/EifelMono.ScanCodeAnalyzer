@@ -68,5 +68,16 @@ namespace TestSamples
 	    SerialNumber = "",
 	    BatchNumber = ""
 	};
+
+        public static TestSample Sample6DayIsNull { get; set; } = new TestSample
+        {
+            ScanCode = @"[)>\x1E06\x1D9N110210785465\x1D1T171122.1\x1DD221100\x1DSFC4248E48DFC\x1E\x04",
+            ScanCodeType = ScanCodeType.IFA,
+
+            ProductNumber = "",
+            ExpiryDate = new DateTime(2020, 10, 30),
+            SerialNumber = "",
+            BatchNumber = ""
+        };
     }
 }

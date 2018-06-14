@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EifelMono.ScanCodeAnalyzer.ContentParser
-{
-    public class IFAParser : Parser
-    {
-        public IFAParser() : this("")
-        {
-        }
-        public IFAParser(string scanCode) : base(scanCode)
-        {
-        }
+namespace EifelMono.ScanCodeAnalyzer.ContentParser {
+    public class IFAParser : Parser {
+	public IFAParser() : this("")
+	{
+	}
+	public IFAParser(string scanCode) : base(scanCode)
+	{
+	}
 
-        #region Characters
-        public static string FieldSeperator = Escape(0x1d);
-        public static string RecordSeperator = Escape(0x1e);
-        // Symbolic Identifier
+	#region Characters
+	public static string FieldSeperator = Escape(0x1d);
+	public static string RecordSeperator = Escape(0x1e);
+	// Symbolic Identifier
 
-        public static string Start = $"[)>{RecordSeperator}06{FieldSeperator}";
-        public static string End = Escape(4);
-        #endregion
+	public static string Start = $"[)>{RecordSeperator}06{FieldSeperator}";
+	public static string End = Escape(4);
+	#endregion
 
-        public override bool CanParse()
-        {
+	public override bool CanParse()
+	{
 #pragma warning disable IDE0046 // Convert to conditional expression
 	    if (!base.CanParse())
 		return false;
@@ -33,31 +31,32 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 	}
 
 	public override string ScanCodeWithoutFrame()
-        {
-            var scanCode = base.ScanCodeWithoutFrame();
-            if (ScanCode.StartsWith(Start))
-                scanCode = ScanCode.Skip(Start.Length);
-            if (scanCode.EndsWith(End))
-                scanCode = scanCode.Take(scanCode.Length - End.Length);
-            return scanCode;
-        }
+	{
+	    var scanCode = base.ScanCodeWithoutFrame();
+	    if (ScanCode.StartsWith(Start))
+		scanCode = ScanCode.Skip(Start.Length);
+	    if (scanCode.EndsWith(End))
+		scanCode = scanCode.Take(scanCode.Length - End.Length);
+	    return scanCode;
+	}
 
-        #region Identifiers
+	#region Identifiers
 
-        public Identifier<string> DI9N { get; private set; } = new Identifier<string>("ProductNumber", "9N", 20, FieldSeperator);
-        public Identifier<string> ProductNumber { get => DI9N; }
-        public Identifier<string> DI1T { get; private set; } = new Identifier<string>("BatchNumber", "1T", 20, FieldSeperator);
-        public Identifier<string> BatchNumber { get => DI1T; }
+	public Identifier<string> DI9N { get; private set; } = new Identifier<string>("ProductNumber", "9N", 20, FieldSeperator);
+	public Identifier<string> ProductNumber { get => DI9N; }
+	public Identifier<string> DIS { get; private set; } = new Identifier<string>("SerialNumber", "S", 20, RecordSeperator);
+	public Identifier<string> SerialNumber { get => DIS; }
+	public Identifier<string> DI1T { get; private set; } = new Identifier<string>("BatchNumber", "1T", 20, FieldSeperator);
+	public Identifier<string> BatchNumber { get => DI1T; }
         public Identifier<DateTime> DID { get; private set; } = new Identifier<DateTime>("ExpiryDate", "D", 20, FieldSeperator, new IdentifierDateConverter("yyMMdd"));
-        public Identifier<DateTime> ExpiryDate { get => DID; }
+	public Identifier<DateTime> ExpiryDate { get => DID; }
 
-        public Identifier<string> DIS { get; private set; } = new Identifier<string>("SerialNumber", "S", 20, RecordSeperator);
-        public Identifier<string> SerialNumber { get => DIS; }
-        #endregion
 
-        public override void Parse()
-        {
-            base.Parse();
-        }
+	#endregion
+
+	public override void Parse()
+	{
+	    base.Parse();
+	}
     }
 }

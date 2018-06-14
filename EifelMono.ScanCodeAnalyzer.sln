@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27705.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer", "EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj", "{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EifelMono.ScanCodeAnalyzer", "EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj", "{42C379FD-BE21-4975-85DF-AF1FA2A7CC08}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EifelMono.ScanCodeAnalyzer.Test", "EifelMono.ScanCodeAnalyzer.Test\EifelMono.ScanCodeAnalyzer.Test.csproj", "{5429C115-B44A-4142-9878-3606D5F5325D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EifelMono.ScanCodeAnalyzer.Test", "EifelMono.ScanCodeAnalyzer.Test\EifelMono.ScanCodeAnalyzer.Test.csproj", "{5429C115-B44A-4142-9878-3606D5F5325D}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "EifelMono.ScanCodeAnalyzerShared", "EifelMono.ScanCodeAnalyzerShared\EifelMono.ScanCodeAnalyzerShared.shproj", "{6FF2F0F0-D431-4A72-859F-018114B772AF}"
 EndProject

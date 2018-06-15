@@ -23,15 +23,10 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 return (false, text);
             try
             {
-                var useText = text;
                 var dayIsNull = false;
                 if (DayCanBeNull)
-                {
-                    var check = CheckNullDay(text);
-                    dayIsNull = check.DayIsNull;
-                    useText = check.UseText;
-                }
-                if (DateTime.TryParseExact(useText, Format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+                    (dayIsNull, text)= CheckNullDay(text);
+                if (DateTime.TryParseExact(text, Format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
                 {
                     if (dayIsNull)
                         date = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
@@ -50,12 +45,17 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
             var useText = "";
             var posdd = Format.IndexOf("dd", StringComparison.Ordinal);
-            if (posdd>= 0)
+            try
             {
-                useText = text;
-                useText= useText.Remove(posdd, 2);
-                useText= useText.Insert(posdd, "01");
+                if (posdd >= 0)
+                {
+                    useText = text;
+                    useText = useText.Remove(posdd, 2);
+                    useText = useText.Insert(posdd, "01");
+                    return (true, useText);
+                }
             }
+            catch {}
             return (false, useText);
         }
     }

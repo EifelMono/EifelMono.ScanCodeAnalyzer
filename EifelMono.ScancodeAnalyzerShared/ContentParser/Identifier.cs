@@ -94,6 +94,5 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
             return $"{Name} {Text}";
         }
-
     }
 }

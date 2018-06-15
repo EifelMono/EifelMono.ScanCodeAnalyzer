@@ -13,5 +13,7 @@
  
 ## Secupharm
 * http://www.securpharm.de/fileadmin/pdf/codierregeln/securPharm_Regeln_Codierung_DE_V2_03.pdf
+* http://www.securpharm.de/fileadmin/pdf/codierregeln/securPharm_Regeln_Codierung_EN_V2_03.pdf
+
 
 

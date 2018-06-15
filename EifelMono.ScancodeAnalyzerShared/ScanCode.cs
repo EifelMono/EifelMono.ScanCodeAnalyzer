@@ -44,7 +44,7 @@ namespace EifelMono.ScanCodeAnalyzer
             if (parser.CanParse())
             {
                 parser.Parse();
-                analyze.ProductCode = parser.ProductNumber.Value;
+                analyze.ProductCode = parser.ProductCode.Value;
                 analyze.ExpiryDate = parser.ExpiryDate.Value;
                 analyze.BatchNumber = parser.BatchNumber.Value;
                 analyze.SerialNumber = parser.SerialNumber.Value;

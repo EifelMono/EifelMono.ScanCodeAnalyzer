@@ -42,15 +42,17 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser {
 
 	#region Identifiers
 
-	public Identifier<string> DI9N { get; private set; } = new Identifier<string>("ProductNumber", "9N", 20, FieldSeperator);
-	public Identifier<string> ProductNumber { get => DI9N; }
-	public Identifier<string> DIS { get; private set; } = new Identifier<string>("SerialNumber", "S", 20, RecordSeperator);
+	public Identifier<string> DI9N { get; private set; } = new Identifier<string>("Product Code", "9N", 20, FieldSeperator);
+	public Identifier<string> ProductCode { get => DI9N; }
+	public Identifier<string> DIS { get; private set; } = new Identifier<string>("Serial number", "S", 20, RecordSeperator);
 	public Identifier<string> SerialNumber { get => DIS; }
-	public Identifier<string> DI1T { get; private set; } = new Identifier<string>("BatchNumber", "1T", 20, FieldSeperator);
+	public Identifier<string> DI1T { get; private set; } = new Identifier<string>("Batch number", "1T", 20, FieldSeperator);
 	public Identifier<string> BatchNumber { get => DI1T; }
-        public Identifier<DateTime> DID { get; private set; } = new Identifier<DateTime>("ExpiryDate", "D", 20, FieldSeperator, new IdentifierDateConverter("yyMMdd"));
+	public Identifier<DateTime> DID { get; private set; } = new Identifier<DateTime>("Expiry date", "D", 20, FieldSeperator, new IdentifierDateConverter("yyMMdd"));
 	public Identifier<DateTime> ExpiryDate { get => DID; }
 
+	public IdentifierList<string> DI8P { get; private set; } = new IdentifierList<string>("Country Specific Product Code's", "8P", 20, FieldSeperator);
+	public IdentifierList<string> CountrySpecificProductCodes { get => DI8P; }
 
 	#endregion
 

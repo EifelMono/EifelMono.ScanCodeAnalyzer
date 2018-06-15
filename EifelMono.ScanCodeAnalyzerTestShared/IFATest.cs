@@ -29,7 +29,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 	{
 	    var ifa = new IFAParser(IFA_1);
 	    Assert.Equal(ParserState.Ok, ifa.State);
-	    Assert.Equal("111234567842", ifa.ProductNumber.Value);
+	    Assert.Equal("111234567842", ifa.ProductCode.Value);
 	    Assert.Equal("1A234B5", ifa.BatchNumber.Value);
 
 	    Assert.Equal(31, ifa.ExpiryDate.Value.Day);
@@ -39,7 +39,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 
 	    ifa = new IFAParser(IFA_1UpperCase);
 	    Assert.Equal(ParserState.Ok, ifa.State);
-	    Assert.Equal("111234567842", ifa.ProductNumber.Value);
+	    Assert.Equal("111234567842", ifa.ProductCode.Value);
 	    Assert.Equal("1A234B5", ifa.BatchNumber.Value);
 
 	    Assert.Equal(31, ifa.ExpiryDate.Value.Day);
@@ -53,7 +53,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 	{
 	    var ifa = new IFAParser(IFA_2);
 	    Assert.Equal(ParserState.Ok, ifa.State);
-	    Assert.Equal("110461290653", ifa.ProductNumber.Value);
+	    Assert.Equal("110461290653", ifa.ProductCode.Value);
 	    Assert.Equal("171011", ifa.BatchNumber.Value);
 
 	    Assert.Equal(31, ifa.ExpiryDate.Value.Day);
@@ -67,7 +67,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 	    string fixIFA_2 = IFA_2Fehler.Replace(@"\x4", @"\x04");
 	    var ifa = new IFAParser(fixIFA_2);
 	    Assert.Equal(ParserState.Ok, ifa.State);
-	    Assert.Equal("110461290653", ifa.ProductNumber.Value);
+	    Assert.Equal("110461290653", ifa.ProductCode.Value);
 	    Assert.Equal("171011", ifa.BatchNumber.Value);
 
 	    Assert.Equal(31, ifa.ExpiryDate.Value.Day);

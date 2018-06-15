@@ -18,13 +18,6 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
             OrgScanCode = scanCode;
             ScanCode = NormalizeEscape(scanCode.Trim());
             Reset();
-            CheckStartParser();
-        }
-
-        protected void CheckStartParser()
-        {
-            if (CanParse())
-                Parse();
         }
 
         #region Escape and more...
@@ -175,7 +168,8 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                     identifier.Text = scanCode.Take(identifier.Length, identifier.Stop);
                     identifier.TextState = IdentifierTextState.Parsed;
                     var (ok, value) = identifier.Converter.TextToValue(identifier.Text);
-                    identifier.Value = value;
+                    if (ok)
+                        identifier.Value = value;
                     identifier.ValueState = ok ? IdentifierValueState.Converted : IdentifierValueState.ConvertError;
                     scanCode = scanCode.Skip(identifier.Length, identifier.Stop);
                     return true;

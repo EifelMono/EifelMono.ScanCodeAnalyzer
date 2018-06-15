@@ -31,10 +31,14 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                     dayIsNull = check.DayIsNull;
                     useText = check.UseText;
                 }
-                var date = DateTime.ParseExact(useText, Format, CultureInfo.InvariantCulture);
-                if (dayIsNull)
-                    date = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
-                return (true, date);
+                if (DateTime.TryParseExact(useText, Format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
+                {
+                    if (dayIsNull)
+                        date = new DateTime(date.Year, date.Month, DateTime.DaysInMonth(date.Year, date.Month));
+                    return (true, date);
+                }
+                else
+                    return (false, text);
             }
             catch
             {
@@ -45,42 +49,12 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         (bool DayIsNull, string UseText) CheckNullDay(string text)
         {
             var useText = "";
-            int? d1 = null;
-            int? d2 = null;
-            char d1c = '\x00';
-            char d2c = '\x00';
-
-            char vc;
-            char fc;
-            for (int i = 0; i < text.Length; i++)
+            var posdd = Format.IndexOf("dd", StringComparison.Ordinal);
+            if (posdd>= 0)
             {
-                vc = text[i];
-                if (i < Format.Length)
-                {
-                    fc = Format[i];
-                    if (fc == 'd')
-                    {
-                        if (d1 == null)
-                        {
-                            d1 = i;
-                            d1c = vc;
-                        }
-                        else
-                            if (d2 == null)
-                            {
-                                d2 = i;
-                                d2c = vc;
-                            }
-                    }
-                }
-                useText += vc;
-            }
-            if (d1 != null && d2 != null && d1c == '0' && d2c == '0')
-            {
-                char[] array = useText.ToCharArray();
-                array[(int)d2] = '1';
-                useText = new string(array);
-                return (true, useText);
+                useText = text;
+                useText= useText.Remove(posdd, 2);
+                useText= useText.Insert(posdd, "01");
             }
             return (false, useText);
         }

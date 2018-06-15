@@ -18,22 +18,22 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         // Group Group-Separator
         // 1d == 29
         public static string GroupSeperator = Escape(0x1d);
-	// Symbolic Identifier
-	public static string Start = "]d2";
+        // Symbolic Identifier
+        public static string Start = "]d2";
 
         #endregion
         public override bool CanParse()
         {
 #pragma warning disable IDE0046 // Convert to conditional expression
-	    if (!base.CanParse())
+            if (!base.CanParse())
                 return false;
-	    if (ScanCode.StartsWith(Start))
-		return true;
-	    return ScanCode.StartsWith(AI01.Id) && ScanCode.Length >= 16 ? true : false;
+            if (ScanCode.StartsWith(Start))
+                return true;
+            return ScanCode.StartsWith(AI01.Id) && ScanCode.Length >= 16 ? true : false;
 #pragma warning restore IDE0046 // Convert to conditional expression
-	}
+        }
 
-	public override string ScanCodeWithoutFrame()
+        public override string ScanCodeWithoutFrame()
         {
             var scanCode = base.ScanCodeWithoutFrame();
             if (scanCode.StartsWith(Start))

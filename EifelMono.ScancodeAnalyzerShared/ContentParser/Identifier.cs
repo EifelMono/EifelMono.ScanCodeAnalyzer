@@ -18,12 +18,12 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
         }
 
-        public Identifier(string name, string id, int length, string stop= "", IdentifierTextConverter converter= null) : this()
+        public Identifier(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : this()
         {
             Name = name;
             Id = id;
             Length = length;
-            Stop= stop;
+            Stop = stop;
             Converter = converter ?? new IdentifierTextConverter();
         }
 
@@ -39,10 +39,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 
         public object Value { get; set; }
 
-        public bool HasValue
-        {
-            get { return Value != null; }
-        }
+        public bool HasValue { get => ValueState == IdentifierValueState.Converted; }
 
         public virtual bool IsValueType()
         {
@@ -62,13 +59,17 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
             ErrorMessage = "";
         }
     }
-    public class Identifier<T> : Identifier 
+    public class Identifier<T> : Identifier
     {
         public Identifier() : base()
         {
+            Value = default;
+            if (typeof(T) == typeof(string))
+                base.Value = "";
+
         }
 
-        public Identifier(string name, string id, int length, string stop= "", IdentifierTextConverter converter= null) : base(name, id, length, stop, converter)
+        public Identifier(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : base(name, id, length, stop, converter)
         {
         }
 

@@ -12,7 +12,6 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
         }
 
-
         public Parser(string scanCode)
         {
             OrgScanCode = scanCode;

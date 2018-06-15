@@ -28,7 +28,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 	public void TestIFA_1()
 	{
 	    var ifa = new IFAParser(IFA_1);
-	    Assert.Equal(ParserState.Ok, ifa.State);
+        Assert.Equal(ParserState.Ok, ifa.State);
 	    Assert.Equal("111234567842", ifa.ProductCode.Value);
 	    Assert.Equal("1A234B5", ifa.BatchNumber.Value);
 

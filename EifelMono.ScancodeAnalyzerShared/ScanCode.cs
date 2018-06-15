@@ -26,11 +26,11 @@ namespace EifelMono.ScanCodeAnalyzer
 
         private static bool AnalyzeGS1(ScanCodeValues analyze)
         {
-            var parser = new GS1Parser(analyze.ScanCode);
+            var parser = new GS1Parser(analyze.ScanCode, false);
             if (parser.CanParse())
             {
                 parser.Parse();
-                analyze.ProductCode = string.IsNullOrEmpty(parser.ProductNumber1.Value) ? parser.ProductNumber2.Value : parser.ProductNumber1.Value;
+                analyze.ProductCode = parser.ProductCode.Value;
                 analyze.ExpiryDate = parser.ExpiryDate.Value;
                 analyze.BatchNumber = parser.BatchNumber.Value;
                 analyze.SerialNumber = parser.SerialNumber.Value;
@@ -40,7 +40,7 @@ namespace EifelMono.ScanCodeAnalyzer
         }
         private static bool AnalyzeIFA(ScanCodeValues analyze)
         {
-            var parser = new IFAParser(analyze.ScanCode);
+            var parser = new IFAParser(analyze.ScanCode, false);
             if (parser.CanParse())
             {
                 parser.Parse();

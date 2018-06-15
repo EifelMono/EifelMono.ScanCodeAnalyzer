@@ -24,7 +24,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 	{
 	    var gs1 = new GS1Parser(GS1_1);
 	    Assert.Equal(ParserState.Ok, gs1.State);
-	    Assert.Equal("04150123456782", gs1.ProductNumber1.Value);
+	    Assert.Equal("04150123456782", gs1.ProductCode.Value);
 	    Assert.Equal("1A234B5", gs1.BatchNumber.Value);
 
 	    Assert.Equal(31, gs1.ExpiryDate.Value.Day);
@@ -34,7 +34,7 @@ namespace EifelMono.ScanCodeAnalyzer.Test {
 
 	    gs1 = new GS1Parser(GS1_1UpperCase);
 	    Assert.Equal(ParserState.Ok, gs1.State);
-	    Assert.Equal("04150123456782", gs1.ProductNumber1.Value);
+	    Assert.Equal("04150123456782", gs1.ProductCode.Value);
 	    Assert.Equal("1A234B5", gs1.BatchNumber.Value);
 
 	    Assert.Equal(31, gs1.ExpiryDate.Value.Day);

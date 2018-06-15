@@ -9,16 +9,11 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         public string Name { get; set; } = "";
         public string Id { get; set; }
         public int Length { get; set; }
-
         public string Stop { get; set; } = "";
-
-        public bool Active { get; set; } = true;
-
         public Identifier()
         {
         }
-
-        public Identifier(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : this()
+        public Identifier(string name, string id, int length, string stop, IdentifierTextConverter converter) : this()
         {
             Name = name;
             Id = id;
@@ -26,11 +21,6 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
             Stop = stop;
             Converter = converter ?? new IdentifierTextConverter();
         }
-
-        public Identifier(string name, string id, int length, IdentifierTextConverter converter) : this(name, id, length, "", converter)
-        {
-        }
-
 
         public IdentifierTextState TextState { get; set; } = IdentifierTextState.None;
         public string Text { get; set; }
@@ -73,6 +63,10 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
         }
 
+        public Identifier(string name, string id, string stop = "", IdentifierTextConverter converter = null) : base(name, id, -1, stop, converter)
+        {
+        }
+
         public Identifier(string name, string id, int length, IdentifierTextConverter converter) : this(name, id, length, "", converter)
         {
         }
@@ -92,7 +86,45 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 
         public override string ToString()
         {
-            return $"{Name} {Text}";
+            return $"Id={Id}[{Name}]({Length},{Stop}) Text={Text}[{TextState}] Value={Value}[{ValueState}]";
         }
     }
+
+
+    public class IdentifierList<T> : Identifier
+    {
+        public IdentifierList() : base()
+        {
+            Value = default;
+            if (typeof(T) == typeof(string))
+                base.Value = "";
+        }
+
+        public IdentifierList(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : base(name, id, length, stop, converter)
+        {
+        }
+
+        public IdentifierList(string name, string id, string stop = "", IdentifierTextConverter converter = null) : base(name, id, -1, stop, converter)
+        {
+        }
+
+        public IdentifierList(string name, string id, int length, IdentifierTextConverter converter) : this(name, id, length, "", converter)
+        {
+        }
+
+        public new T Value { get => (T)base.Value; set => base.Value = value; }
+
+        public override void Reset()
+        {
+            base.Reset();
+            Value = default;
+        }
+
+        public override bool IsValueType()
+        {
+            return Value is T;
+        }
+    }
+
+
 }

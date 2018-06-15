@@ -7,61 +7,51 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 {
     public class GS1Parser : Parser
     {
-        public GS1Parser() : this("")
+        #region Constructors
+        public GS1Parser() : this("", false)
         {
         }
-        public GS1Parser(string scanCode) : base(scanCode)
+        public GS1Parser(string scanCode, bool parse= true) : base(scanCode, parse)
         {
         }
-
-        #region Characters
-        // Group Group-Separator
-        // 1d == 29
-        public static string GroupSeperator = Escape(0x1d);
-        // Symbolic Identifier
-        public static string Start = "]d2";
-
         #endregion
+
+        #region Control
+        public static string GroupSeperator = Escape(0x1d);
+        public static string FrameStart = "]d2";
         public override bool CanParse()
         {
-#pragma warning disable IDE0046 // Convert to conditional expression
             if (!base.CanParse())
                 return false;
-            if (ScanCode.StartsWith(Start))
+            if (ScanCode.StartsWith(FrameStart))
                 return true;
             return ScanCode.StartsWith(AI01.Id) && ScanCode.Length >= 16 ? true : false;
-#pragma warning restore IDE0046 // Convert to conditional expression
         }
-
         public override string ScanCodeWithoutFrame()
         {
             var scanCode = base.ScanCodeWithoutFrame();
-            if (scanCode.StartsWith(Start))
-                scanCode = scanCode.Skip(Start.Length);
+            if (scanCode.StartsWith(FrameStart))
+                scanCode = scanCode.Skip(FrameStart.Length);
             return scanCode;
         }
-
-        #region Identifiers
-        public Identifier<string> AI01 { get; private set; } = new Identifier<string>("ProductNumber1", "01", 14);
-        public Identifier<string> ProductNumber1 { get => AI01; }
-        public Identifier<string> AI02 { get; private set; } = new Identifier<string>("ProductNumber2", "02", 14);
-        public Identifier<string> ProductNumber2 { get => AI02; }
-
-        public Identifier<string> AI10 { get; private set; } = new Identifier<string>("BatchNumber", "10", 20, GroupSeperator);
-        public Identifier<string> BatchNumber { get => AI10; }
-
-        public Identifier<DateTime> AI17 { get; private set; } = new Identifier<DateTime>("ExpiryDate", "17", 6, new IdentifierDateConverter("yyMMdd"));
-        public Identifier<DateTime> ExpiryDate { get => AI17; }
-
-        public Identifier<string> AI21 { get; private set; } = new Identifier<string>("SerialNumber", "21", 20, GroupSeperator);
-        public Identifier<string> SerialNumber { get => AI21; }
-
-
         #endregion
 
-        public override void Parse()
-        {
-            base.Parse();
-        }
+        #region Identifiers
+        protected Identifier<string> AI01 { get; private set; } = new Identifier<string>("Product code", "01", 14);
+        public Identifier<string> ProductCode{ get => AI01; }
+
+        protected Identifier<string> AI10 { get; private set; } = new Identifier<string>("Batch number", "10", 20, GroupSeperator);
+        public Identifier<string> BatchNumber { get => AI10; }
+
+        protected Identifier<DateTime> AI17 { get; private set; } = new Identifier<DateTime>("Expiry Date", "17", 6, new IdentifierDateConverter("yyMMdd"));
+        public Identifier<DateTime> ExpiryDate { get => AI17; }
+
+        protected Identifier<string> AI21 { get; private set; } = new Identifier<string>("Serial number", "21", 20, GroupSeperator);
+        public Identifier<string> SerialNumber { get => AI21; }
+
+        public Identifier<string> AI710 { get; private set; } = new Identifier<string>("Country Product code 1", "710", 20, GroupSeperator);
+        public Identifier<string> AI711 { get; private set; } = new Identifier<string>("Country Product code 2", "711", 20, GroupSeperator);
+
+        #endregion
     }
 }

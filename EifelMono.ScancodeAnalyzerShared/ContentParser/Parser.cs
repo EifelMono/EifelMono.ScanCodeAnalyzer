@@ -8,15 +8,23 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
 {
     public class Parser
     {
-        public Parser() : this("")
+        public Parser() : this("", false)
         {
         }
 
-        public Parser(string scanCode)
+        public Parser(string scanCode, bool parse)
         {
             OrgScanCode = scanCode;
             ScanCode = NormalizeEscape(scanCode.Trim());
             Reset();
+            if (parse)
+                DoParse();
+
+            void DoParse()
+            {
+                if (CanParse())
+                    Parse();
+            }
         }
 
         #region Escape and more...

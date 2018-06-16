@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EifelMono.Core.Extension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 return false;
             return ScanCode.StartsWith(FrameStart) && ScanCode.EndsWith(FrameEnd) ? true : false;
         }
-        public override string ScanCodeWithoutFrame()
+        protected override string ScanCodeWithoutFrame()
         {
             var scanCode = base.ScanCodeWithoutFrame();
             if (ScanCode.StartsWith(FrameStart))
@@ -37,6 +38,9 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 scanCode = scanCode.Take(scanCode.Length - FrameEnd.Length);
             return scanCode;
         }
+
+        public override string IdentifiertsToScanCode() =>
+            FrameStart + base.IdentifiertsToScanCode().IfEndsWithRemove(FieldSeperator) + FrameEnd;
         #endregion
 
         #region Identifiers
@@ -50,8 +54,8 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         public Identifier<DateTime> ExpiryDate { get => IdD; }
         protected Identifier<DateTime> Id16D { get; private set; } = new Identifier<DateTime>("ManufactureDate date", "16D", FieldSeperator, new IdentifierDateConverter("yyyyMMdd"));
         public Identifier<DateTime> ManufactureDate { get => Id16D; }
-        protected IdentifierList<string> Id8P { get; private set; } = new IdentifierList<string>("Country Specific Product Code's", "8P", 20, FieldSeperator);
-        public IdentifierList<string> CountrySpecificProductCodes { get => Id8P; }
+        protected MultiIdentifier<string> Id8P { get; private set; } = new MultiIdentifier<string>("Country Specific Product Code's", "8P", 20, FieldSeperator);
+        public MultiIdentifier<string> CountrySpecificProductCodes { get => Id8P; }
 
         #endregion
     }

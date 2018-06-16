@@ -21,7 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)EifelMono.QuickButDirty.Binding\BindingClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EifelMono.QuickButDirty.Binding\BindingProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EifelMono.QuickButDirty.Binding\IBindingClass.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EifelMono.QuickButDirty.Extension\PipeExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EifelMono.Core.Extension\PipeExtension.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

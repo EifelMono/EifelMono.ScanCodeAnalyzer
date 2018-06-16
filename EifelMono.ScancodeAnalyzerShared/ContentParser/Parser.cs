@@ -91,10 +91,34 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         {
             return !string.IsNullOrEmpty(ScanCode);
         }
-
-        public virtual string ScanCodeWithoutFrame()
+        protected virtual string ScanCodeWithoutFrame()
         {
             return ScanCode;
+        }
+        public virtual string IdentifiertsToScanCode()
+        {
+            var sb = new StringBuilder();
+            foreach (var identifier in Identifiers)
+            {
+                if ((identifier.Text ?? "").Length > 0)
+                {
+                    var text = identifier.Id + identifier.Text;
+                    if (identifier.Length == -1)
+                        text += identifier.Stop;
+                    else
+                    {
+                        if ((identifier.Stop ?? "") != "")
+                            text += identifier.Stop;
+                        else
+                        {
+                            if (text.Length < identifier.Length)
+                                text = identifier.Id + new string(' ', identifier.Length - text.Length) + text;
+                        }
+                    }
+                    sb.Append(text);
+                }
+            }
+            return sb.ToString();
         }
 
         public ParserState State { get; set; } = ParserState.None;
@@ -184,5 +208,8 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 return false;
             }
         }
+
+
+
     }
 }

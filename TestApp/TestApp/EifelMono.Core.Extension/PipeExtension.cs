@@ -4,7 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
 
-namespace EifelMono.QuickButDirty.Extension {
+namespace EifelMono.Core.Extension
+{
     public static class PipeExtension
     {
         public static T Pipe<T>(this T pipe, Action<T> action)
@@ -12,7 +13,5 @@ namespace EifelMono.QuickButDirty.Extension {
             action(pipe);
             return pipe;
         }
-
-        public static T Pipe<T>(this T pipe, Func<T, T> action) => action(pipe);
     }
 }

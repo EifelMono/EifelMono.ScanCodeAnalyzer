@@ -34,6 +34,7 @@ namespace EifelMono.ScanCodeAnalyzer
                 analyze.ExpiryDate = parser.ExpiryDate.Value;
                 analyze.BatchNumber = parser.BatchNumber.Value;
                 analyze.SerialNumber = parser.SerialNumber.Value;
+                analyze.Parser = parser;
                 return true;
             }
             return false;
@@ -48,6 +49,7 @@ namespace EifelMono.ScanCodeAnalyzer
                 analyze.ExpiryDate = parser.ExpiryDate.Value;
                 analyze.BatchNumber = parser.BatchNumber.Value;
                 analyze.SerialNumber = parser.SerialNumber.Value;
+                analyze.Parser = parser;
                 return true;
             }
             return false;

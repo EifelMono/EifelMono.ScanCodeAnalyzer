@@ -1,4 +1,4 @@
-﻿using EifelMono.QuickButDirty.Extension;
+﻿using EifelMono.Core.Extension;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

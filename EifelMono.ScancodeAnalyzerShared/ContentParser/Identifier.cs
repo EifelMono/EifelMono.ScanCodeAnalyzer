@@ -91,24 +91,24 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
     }
 
 
-    public class IdentifierList<T> : Identifier
+    public class MultiIdentifier<T> : Identifier
     {
-        public IdentifierList() : base()
+        public MultiIdentifier() : base()
         {
             Value = default;
             if (typeof(T) == typeof(string))
                 base.Value = "";
         }
 
-        public IdentifierList(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : base(name, id, length, stop, converter)
+        public MultiIdentifier(string name, string id, int length, string stop = "", IdentifierTextConverter converter = null) : base(name, id, length, stop, converter)
         {
         }
 
-        public IdentifierList(string name, string id, string stop = "", IdentifierTextConverter converter = null) : base(name, id, -1, stop, converter)
+        public MultiIdentifier(string name, string id, string stop = "", IdentifierTextConverter converter = null) : base(name, id, -1, stop, converter)
         {
         }
 
-        public IdentifierList(string name, string id, int length, IdentifierTextConverter converter) : this(name, id, length, "", converter)
+        public MultiIdentifier(string name, string id, int length, IdentifierTextConverter converter) : this(name, id, length, "", converter)
         {
         }
 

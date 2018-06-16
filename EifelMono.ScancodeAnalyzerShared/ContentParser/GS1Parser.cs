@@ -27,12 +27,17 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
                 return true;
             return ScanCode.StartsWith(AI01.Id) && ScanCode.Length >= 16 ? true : false;
         }
-        public override string ScanCodeWithoutFrame()
+        protected override string ScanCodeWithoutFrame()
         {
             var scanCode = base.ScanCodeWithoutFrame();
             if (scanCode.StartsWith(FrameStart))
                 scanCode = scanCode.Skip(FrameStart.Length);
             return scanCode;
+        }
+
+        public override string IdentifiertsToScanCode()
+        {
+            return FrameStart + base.IdentifiertsToScanCode();
         }
         #endregion
 

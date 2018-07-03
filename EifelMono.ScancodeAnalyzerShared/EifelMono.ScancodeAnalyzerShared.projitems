@@ -26,9 +26,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)ScanCode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScanCodeType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ScanCodeValues.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)EifelMono.Core.Extension\StringExtension.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)EifelMono.Core.Extension\" />
   </ItemGroup>
 </Project>

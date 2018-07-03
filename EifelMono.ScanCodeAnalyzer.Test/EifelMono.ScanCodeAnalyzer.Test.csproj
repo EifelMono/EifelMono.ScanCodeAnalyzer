@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EifelMono.Core\EifelMono.Core\EifelMono.Core.csproj" />
     <ProjectReference Include="..\EifelMono.ScanCodeAnalyzer\EifelMono.ScanCodeAnalyzer.csproj" />
   </ItemGroup>
 

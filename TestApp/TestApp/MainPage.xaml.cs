@@ -1,4 +1,4 @@
-﻿using EifelMono.QuickButDirty.Binding;
+﻿using EifelMono.Core.Binding;
 using EifelMono.ScanCodeAnalyzer;
 using System;
 using System.Collections.Generic;

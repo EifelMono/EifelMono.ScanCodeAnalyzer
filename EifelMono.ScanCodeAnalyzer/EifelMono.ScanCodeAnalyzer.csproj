@@ -21,4 +21,8 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EifelMono.Core\EifelMono.Core\EifelMono.Core.csproj" />
+  </ItemGroup>
+
 </Project>

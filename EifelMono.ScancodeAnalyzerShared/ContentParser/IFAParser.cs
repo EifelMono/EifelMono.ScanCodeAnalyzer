@@ -1,4 +1,5 @@
 ﻿using EifelMono.Core.Extension;
+using ProLog2.Essentials.EifelMono.Core.Extension;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace EifelMono.ScanCodeAnalyzer.ContentParser
         }
 
         public override string IdentifiertsToScanCode() =>
-            FrameStart + base.IdentifiertsToScanCode().IfEndsWithRemove(FieldSeperator) + FrameEnd;
+            FrameStart + base.IdentifiertsToScanCode().IfEndsWithRemoveIt(FieldSeperator) + FrameEnd;
         #endregion
 
         #region Identifiers

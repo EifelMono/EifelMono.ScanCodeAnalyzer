@@ -70,6 +70,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EifelMono.Core\EifelMono.Core\EifelMono.Core.csproj">
+      <Project>{36d9c390-c23b-4478-9fdb-4630f16349d7}</Project>
+      <Name>EifelMono.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EifelMono.ScanCodeAnalyzerNet40\EifelMono.ScanCodeAnalyzerNet40.csproj">
       <Project>{c6ada3f0-82d5-4b38-9430-0f0a5fcf65aa}</Project>
       <Name>EifelMono.ScanCodeAnalyzerNet40</Name>

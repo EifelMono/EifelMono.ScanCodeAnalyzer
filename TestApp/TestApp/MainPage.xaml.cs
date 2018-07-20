@@ -1,5 +1,4 @@
-﻿using EifelMono.Core.Binding;
-using EifelMono.ScanCodeAnalyzer;
+﻿using EifelMono.ScanCodeAnalyzer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using TestSamples;
+using EifelMono.Core;
+using EifelMono.Core.Binding;
 
 namespace TestApp
 {
